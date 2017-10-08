@@ -382,7 +382,7 @@ app.get('/reportesCalendario', function(req, res){
   
   
   // Solicitud a servidor para ver controles
-    request('http://controleshls.azurewebsites.net/subirReportes?', function (error, response, body) {
+    request('http://controlesandroidexservidor.azurewebsites.net//subirReportes?', function (error, response, body) {
     console.log('error:', error); // Imprime error si ocurre
     console.log('statusCode:', response && response.statusCode); // Codigo de la respuesta
     console.log('body:', body); // Cuerpo de la respuesta
@@ -572,7 +572,7 @@ app.post('/calendarioSubirActividadesAsesor', urlencodedParser, function(req, re
     var nombreD = "user=" + nombre;
     // Solicitud a servidor
     request.post({
-        url:     'http://controleshls.azurewebsites.net/resumenReportesAsesor',
+        url:     'http://controlesandroidexservidor.azurewebsites.net//resumenReportesAsesor',
         body:    nombreD
     }, function(error, response, body){
     console.log('error:', error); // Imprime error si ocurre
@@ -728,7 +728,7 @@ app.post('/calendarioEditarActividadesAsesor', urlencodedParser, function(req, r
     var nombreD = "user=" + nombre;
     // Solicitud a servidor
     request.post({
-        url:     'http://controleshls.azurewebsites.net/resumenReportesAsesor',
+        url:     'http://controlesandroidexservidor.azurewebsites.net//resumenReportesAsesor',
         body:    nombreD
     }, function(error, response, body){
     console.log('error:', error); // Imprime error si ocurre
@@ -1125,7 +1125,7 @@ app.post('/loginAdmin', urlencodedParser, function(req, res){
     
     
     if (user=="adminhls" && clave=="ag1603") {
-        res.redirect("http://controleshls.azurewebsites.net");
+        res.redirect("http://controlesandroidexservidor.azurewebsites.net/");
     }
         else {
             console.log("ERROR: Credenciales incorrectas");
@@ -2666,7 +2666,7 @@ app.post('/historicoSubirActividadesAsesor', urlencodedParser, function(req, res
 app.get('/subirReportes', function(req, res){
     sess = req.session;
     // Solicitud a servidor para ver controles
-    request('http://controleshls.azurewebsites.net/subirReportes?', function (error, response, body) {
+    request('http://controlesandroidexservidor.azurewebsites.net//subirReportes?', function (error, response, body) {
     console.log('error:', error); // Imprime error si ocurre
     console.log('statusCode:', response && response.statusCode); // Codigo de la respuesta
     console.log('body:', body); // Cuerpo de la respuesta
@@ -2793,7 +2793,7 @@ app.get('/subirReportes', function(req, res){
  * ----------------------------------
  */
 app.get('/resumenReportes', function(req, res){
-  res.redirect("http://controleshls.azurewebsites.net/resumenReportes");
+  res.redirect("http://controlesandroidexservidor.azurewebsites.net//resumenReportes");
 });
 
 
@@ -2804,7 +2804,7 @@ app.get('/resumenReportes', function(req, res){
  * ----------------------------------
  */
 app.get('/baseDatos.db', function(req, res){
-  res.redirect("http://controleshls.azurewebsites.net/baseDatos.db");
+  res.redirect("http://controlesandroidexservidor.azurewebsites.net//baseDatos.db");
 });
 
 
@@ -2826,7 +2826,7 @@ app.post('/subirReportesAsesor', urlencodedParser, function(req, res) {
     var nombreD = "asesor=" + nombre;
     // Solicitud a servidor
     request.post({
-        url:     'http://controleshls.azurewebsites.net/subirReportesAsesor',
+        url:     'http://controlesandroidexservidor.azurewebsites.net//subirReportesAsesor',
         body:    nombreD
     }, function(error, response, body){
     console.log('error:', error); // Imprime error si ocurre
@@ -3145,7 +3145,7 @@ app.post('/subirActividadesAsesor', urlencodedParser, function(req, res) {
     var nombreD = "user=" + nombre;
     // Solicitud a servidor
     request.post({
-        url:     'http://controleshls.azurewebsites.net/resumenReportesAsesor',
+        url:     'http://controlesandroidexservidor.azurewebsites.net//resumenReportesAsesor',
         body:    nombreD
     }, function(error, response, body){
     console.log('error:', error); // Imprime error si ocurre
@@ -3299,7 +3299,7 @@ app.post('/subirReportesCliente', urlencodedParser, function(req, res) {
     var nombreD = "cliente=" + nombre;
     // Solicitud a servidor
     request.post({
-        url:     'http://controleshls.azurewebsites.net/resumenReportesCliente',
+        url:     'http://controlesandroidexservidor.azurewebsites.net//resumenReportesCliente',
         body:    nombreD
     }, function(error, response, body){
     console.log('error:', error); // Imprime error si ocurre
@@ -3459,7 +3459,7 @@ app.post('/subirVerActividad', urlencodedParser, function(req, res) {
     var anio = fechaD[2];
     // Solicitud a servidor
     request.post({
-        url:     'http://controleshls.azurewebsites.net/subirVerActividad',
+        url:     'http://controlesandroidexservidor.azurewebsites.net//subirVerActividad',
         form:    
             {
                 asesor: nombre,
@@ -3625,7 +3625,7 @@ app.post('/reporteCreado', urlencodedParser, function(req, res){
     }
     // Solicitud a servidor
     request.post({
-        url:     'http://controleshls.azurewebsites.net/subirReporte',
+        url:     'http://controlesandroidexservidor.azurewebsites.net//subirReporte',
         form:    
             {
                 asesor: asesor,
@@ -3730,7 +3730,7 @@ app.post('/reporteEditado', urlencodedParser, function(req, res){
             };
     // Solicitud a servidor
     request.post({
-        url:     'http://controleshls.azurewebsites.net/subirEditarReporte',
+        url:     'http://controlesandroidexservidor.azurewebsites.net//subirEditarReporte',
         form:  datosSolicitud
     }, function(error, response, body){
     console.log('error:', error); // Imprime error si ocurre
@@ -3782,7 +3782,7 @@ app.post('/reporteEliminado', urlencodedParser, function(req, res){
     var anio = fechaD[2];
     // Solicitud a servidor
     request.post({
-        url:     'http://controleshls.azurewebsites.net/subirEliminarReporte',
+        url:     'http://controlesandroidexservidor.azurewebsites.net//subirEliminarReporte',
         form:    
             {
                 asesor: asesor,
@@ -3853,7 +3853,7 @@ app.post('/nuevaActividad', urlencodedParser, function(req, res){
     
     // Solicitud a servidor
     request.post({
-        url:     'http://controleshls.azurewebsites.net/subirActividad',
+        url:     'http://controlesandroidexservidor.azurewebsites.net//subirActividad',
         form:    
             {
                 asesor: asesor,
@@ -3914,7 +3914,7 @@ app.post('/eliminarActividad', urlencodedParser, function(req, res){
             };
     // Solicitud a servidor
     request.post({
-        url:     'http://controleshls.azurewebsites.net/subirEliminarActividad',
+        url:     'http://controlesandroidexservidor.azurewebsites.net//subirEliminarActividad',
         form:   datos 
             
     }, function(error, response, body){
@@ -3962,7 +3962,7 @@ app.post('/editarActividad', urlencodedParser, function(req, res) {
     var anio = fechaD[2];
     // Solicitud a servidor
     request.post({
-        url:     'http://controleshls.azurewebsites.net/subirVerActividad',
+        url:     'http://controlesandroidexservidor.azurewebsites.net//subirVerActividad',
         form:    
             {
                 asesor: nombre,
@@ -4169,7 +4169,7 @@ app.post('/login', urlencodedParser, function(req, res){
     
     // Solicitud a servidor
     request.post({
-        url:     'http://controleshls.azurewebsites.net/subirLogin',
+        url:     'http://controlesandroidexservidor.azurewebsites.net//subirLogin',
         form:    
             {
                 user: asesor,
@@ -4258,7 +4258,7 @@ app.post('/subirRegistro', urlencodedParser,  function(req, res){
     }
     // Solicitud a servidor
     request.post({
-        url:     'http://controleshls.azurewebsites.net/subirRegistro',
+        url:     'http://controlesandroidexservidor.azurewebsites.net//subirRegistro',
         form:    
             {
                 nombre: nombre,
@@ -4330,7 +4330,7 @@ app.post('/subirCambioClave', urlencodedParser,  function(req, res){
     }
     // Solicitud a servidor
     request.post({
-        url:     'http://controleshls.azurewebsites.net/cambioClave',
+        url:     'http://controlesandroidexservidor.azurewebsites.net//cambioClave',
         form:    
             {
                 codigo: codigo,
