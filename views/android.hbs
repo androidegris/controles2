@@ -1,0 +1,230 @@
+<html><head>
+    <meta charset="utf-8">
+    <title>Controles HLS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/custom.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/lightgallery.css">
+  </head><body>
+       <script src="js/lightgallery.min.js"></script>
+
+    <!-- lightgallery plugins -->
+    <script src="js/lg-thumbnail.min.js"></script>
+    <script src="js/lg-fullscreen.min.js"></script>
+    <div class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><span>CONTROLES HLS</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="hidden-sm hidden-xs">
+              <a href="/"><img src="home.png" alt="Inicio" width="25" height="25"></a>
+            </li>
+            <li>
+              <a href="/">Inicio</a>
+            </li>
+            <li>
+              <a href="/historico">Historico</a>
+            </li>
+            <li>
+              <a href="/admin">Admin</a>
+            </li>
+            {{#if asesor}}
+            <li>
+              <a href="/salir">Salir</a>
+            </li>
+            {{/if}}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="section section-primary text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="media-list">
+              <li class="media">
+                <a class="pull-left" href="/"><img class="img-circle media-object" src="android.png" height="120" width="120"></a>
+                <div class="media-body">
+                  <h1 class="text-center">{{title}}</h1>
+                </div>
+              </li>
+              <li class="media"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="caption1" style="display:none">
+    <h1>Calendario</h1>
+    </div>
+    <div id="caption2" style="display:none">
+    <h1>Datos Calendario</h1>
+    </div>
+    <div id="caption3" style="display:none">
+    <h1>Crear Reporte</h1>
+    </div>
+    <div id="caption4" style="display:none">
+    <h1>Mis Reportes</h1>
+    </div>
+    <div id="caption5" style="display:none">
+    <h1>Datos Reportes</h1>
+    </div>
+    <div id="caption6" style="display:none">
+    <h1>Seguimiento Horas</h1>
+    </div>
+    <div id="caption7" style="display:none">
+    <h1>Mis Clientes</h1>
+    </div>
+    <div id="caption8" style="display:none">
+    <h1>Datos Cliente</h1>
+    </div>
+    <div id="caption9" style="display:none">
+    <h1>Lista Reportes</h1>
+    </div>
+    <div id="caption10" style="display:none">
+    <h1>Lista Usuarios</h1>
+    </div>
+    <div id="caption11" style="display:none">
+    <h1>Lista Clientes</h1>
+    </div>
+     <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="well">
+              <h4 class="text-center text-justified">Aplicación que permite generar, editar y revisar los reportes de los
+    asesores de sistemas de HLS.<br>Para poder instalar los archivos APK en dispositivos con Android, es necesario dar los permisos necesarios, opción que de forma predeterminada esta deshabilitada.
+Se consigue habilitando la opción "Orígenes desconocidos" en la configuración de seguridad del sistema.</h4>
+              <br>
+    <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+          </div>
+          <div class="col-md-4">
+              <a class="btn btn-block btn-lg btn-success" href="https://dl.dropbox.com/s/yn2vfseswd5ncvt/controles%20hls%20v%202.5.apk?dl=0">Descargar Apk</a>
+               <hr>
+               <div id="galeria">
+                      <a href="tablet/calendario.jpg"class="btn btn-lg btn-block btn-info" data-sub-html="#caption1">Galería Imágenes</a>
+                      <a href="tablet/dialogoCalendario.jpg" data-sub-html="#caption2"></a>
+                      <a href="tablet/crearReporte.jpg"     data-sub-html="#caption3"></a>
+                      <a href="tablet/misreportes.jpg"      data-sub-html="#caption4"></a>
+                      <a href="tablet/datosreporte.jpg"     data-sub-html="#caption5"></a>
+                      <a href="tablet/seguimientoHoras.jpg" data-sub-html="#caption6"></a>
+                      <a href="tablet/misclientes.jpg"      data-sub-html="#caption7"></a>
+                      <a href="tablet/dialogoCliente.jpg"   data-sub-html="#caption8"></a>
+                      <a href="tablet/listaReportes.jpg"    data-sub-html="#caption9"></a>
+                      <a href="tablet/listaUsuarios.jpg"    data-sub-html="#caption10"></a>
+                      <a href="tablet/listaClientes.jpg"    data-sub-html="#caption11"></a>
+                </div>
+          </div>
+          <div class="col-md-4">
+          </div>
+        </div>
+      </div>
+      <div class="row">`
+      <hr>
+           <!-- CARRUSEL -->        
+        <div id="appcarousel2" data-interval="10000" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4"></li>
+            <li data-target="#myCarousel" data-slide-to="5"></li>
+            <li data-target="#myCarousel" data-slide-to="6"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="item active">
+              <img src="celular/login.png" class="center-block" title="Login">
+              <div class="carousel-caption">
+                    <h3>Login</h3>
+              </div>
+            </div>
+            <div class="item">
+               <img src="celular/registro.png" class="center-block" title="Registro">
+                <div class="carousel-caption">
+                    <h3>Registro</h3>
+              </div>
+            </div>
+            <div class="item">
+               <img src="celular/menu1.png" class="center-block" title="Menu1">
+                <div class="carousel-caption">
+                    <h3>Menu 1</h3>
+              </div>
+            </div>
+            <div class="item">
+               <img src="celular/menu2.png" class="center-block" title="Menu2">
+                <div class="carousel-caption">
+                    <h3>Menu 2</h3>
+              </div>
+            </div>
+            <div class="item">
+               <img src="celular/editar reporte.png" class="center-block" title="Editar reporte">
+                <div class="carousel-caption">
+                    <h3>Editar Reporte</h3>
+              </div>
+            </div>
+            <div class="item">
+               <img src="celular/actividades.png" class="center-block" title="Actividades">
+                <div class="carousel-caption">
+                    <h3>Actividades</h3>
+              </div>
+            </div>
+            <div class="item">
+               <img src="celular/informacion.png" class="center-block" title="Información">
+                <div class="carousel-caption">
+                    <h3>Información</h3>
+              </div>
+            </div>
+          <a class="left carousel-control" href="#appcarousel2" data-slide="prev"><i class="icon-prev fa fa-angle-left"></i></a>
+          <a class="right carousel-control" href="#appcarousel2" data-slide="next"><i class="icon-next fa fa-angle-right"></i></a>
+        </div>
+        
+        
+        
+        
+          
+            
+            
+      </div>
+          
+      
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <hr>
+    
+  
+
+</body>
+ <script>
+  lightGallery(document.getElementById('galeria'), {
+    thumbnail:true
+});    
+     
+     
+ </script>
+
+</html>
+
+

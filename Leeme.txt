@@ -1,0 +1,13 @@
+Para actualizar historico debe
+
+Tener los archivos:
+    anterior.db (Archivo con los reportes del mes a actualizar, se recibe por email)
+    historicoBaseDatos.db (Base de datos historico actual, se descarga de la pagina)
+    
+Utilizar el siguiente comando en la carpeta actualizar_mes con el mes a actualizar:
+    actualizar [mes]
+
+Por ejemplo actualizar 7
+Este proceso genera el archivo historico.db y lo copia en la carpeta heroku 
+(archivos de la página) sustituyendo el anterior y luego se compila la página nuevamente
+

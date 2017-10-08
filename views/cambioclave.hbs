@@ -1,0 +1,91 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <title>Controles HLS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+    rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
+    rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+  </head>
+  
+  <body>
+    <div class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><span>CONTROLES HLS</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="hidden-sm hidden-xs">
+              <a href="/"><img src="home.png" alt="Inicio" width="25" height="25"></a>
+            </li>
+            <li>
+              <a href="/">Inicio</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="section section-primary text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="media-list">
+              <li class="media">
+                <a class="pull-left" href="/"><img class="img-circle media-object" src="logo1.png" height="64" width="64"></a>
+                <div class="media-body">
+                  <h1 class="text-center">Cambio Clave Asesor</h1>
+                </div>
+              </li>
+              <li class="media"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <h1 class="text-center"></h1>
+    </div>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <form role="form" action="subirCambioClave"method="post">
+              <div class="form-group">
+                <label class="control-label" for="exampleInputEmail1">Usuario a cambiar</label>
+                <input class="form-control" id="exampleInputEmail1" placeholder="Introduzca un nombre de usuario"
+                type="text" name="user">
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="exampleInputPassword1">Nueva Clave</label>
+                <input class="form-control" id="exampleInputPassword1" placeholder="Introduzca clave"
+                type="password" name="password">
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="exampleInputPassword1">Codigo Seguridad</label>
+                <input class="form-control" id="exampleInputPassword1" placeholder="Introduzca codigo"
+                type="password" name="codigo">
+              </div>
+              <button type="submit" class="btn btn-block btn-lg btn-primary" name="Enviar" value="funcion">REGISTRAR</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

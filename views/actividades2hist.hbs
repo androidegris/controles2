@@ -1,0 +1,168 @@
+<html><head>
+    <meta charset="utf-8">
+    <title>Controles HLS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+  </head><body>
+    
+    <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/"><span>CONTROLES HLS</span></a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="hidden-sm hidden-xs">
+                            <a href="/"><img src="home.png" alt="Inicio" width="25" height="25"></a>
+                        </li>
+                        <li>
+                            <a href="/">Inicio</a>
+                        </li>
+                        <li>
+              <a href="/historico">Historico</a>
+            </li>
+                    </ul>
+                </div>
+            </div>
+        </div><div class="section section-success text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="media-list">
+              <li class="media">
+                <a class="pull-left" href="historico"><img class="img-circle media-object" src="logo1.png" height="64" width="64"></a>
+                <div class="media-body">
+                  <h1 class="text-center">{{titulo}}</h1>
+                </div>
+              </li>
+              <li class="media"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+             <div class="col-md-4">
+                 </div>
+        <div class="col-md-4">
+             <h3 class="text-center">Reportes por Mes</h3>
+             {{#if cliente}}
+            <form role="form" action="historicoSubirReportesCliente" method="post">
+            {{/if}}
+             {{#if asesor}}
+              <form role="form" action="historicoSubirActividadesAsesor" method="post">
+              {{/if}}
+                 <select class="form-control input-lg" id="sel1" name="mes">
+                        <option disabled selected value> Seleccione Mes </option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                      </select>
+                      <select class="form-control input-lg" id="sel1" name="anio">
+                        <option disabled selected value>Seleccione Año</option>
+                        <option>2016</option>
+                        <option>2017</option>
+                        <option>2018</option>
+                      </select>
+                      {{#if cliente}}
+                      <input type="hidden" name="cliente" value="{{cliente}}">
+                      {{/if}}
+                      {{#if asesor}}
+                      <input type="hidden" name="asesor" value="{{asesor}}">
+                      {{/if}}
+                <button type="submit" class="btn btn-block btn-lg btn-success" name="Enviar" value="Sign up">VER</button>
+            </form>
+        </div>
+        <div class="col-md-4">
+                 </div>
+        </div>
+        
+        
+        <div class="container">
+            <div class="col-md-10">
+                 </div>
+            <div class="col-md-2">
+            <button onclick="goBack()" class="btn btn-block btn-lg btn-info">Regresar</button>
+                 </div>
+       </div>
+            
+        
+        
+    <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                                <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Asesor</th>
+                                    <th>Cliente</th>
+                                    <th>Fecha</th>
+                                    <th>H. Inicio</th>
+                                    <th>H. Fin</th>
+                                    <th>H. Facturadas</th>
+                                    <th>Observaciones</th>
+                                    <th>Actividades</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                        {{#each reportes}}
+                                <tr>
+                                    <td>{{asesor}}</td>
+                                    <td>{{cliente}}</td>
+                                    <td>{{fecha}}</td>
+                                    <td>{{hini}}</td>
+                                    <td>{{hfin}}</td>
+                                    <td>{{hfact}}</td>
+                                    <td>{{obs}}</td>
+                                    {{#if actividades}}
+                                    <td>
+                                      {{#each actividades}}
+                                        <p>{{desc}}</p>
+                                       {{/each}}
+                                    </td>
+                                    {{else}}
+                                    <td>
+                                    </td>
+                                    {{/if}}    
+                        {{/each}}
+                                </tr></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+  
+
+</body></html>

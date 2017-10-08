@@ -1,0 +1,315 @@
+<html><head>
+    <meta charset="utf-8">
+    <title>Controles HLS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap-datepicker.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="locales/bootstrap-datepicker.es.min.js"></script>
+  </head><body>
+    <div class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><span>CONTROLES HLS</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="hidden-sm hidden-xs">
+              <a href="/"><img src="home.png" alt="Inicio" width="25" height="25"></a>
+            </li>
+            <li>
+              <a href="/">Inicio</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="section section-primary text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="media-list">
+              <li class="media">
+                <a class="pull-left" href="/"><img class="img-circle media-object" src="logo1.png" height="64" width="64"></a>
+                <div class="media-body">
+                  <h1 class="text-center">{{titulo}}</h1>
+                </div>
+              </li>
+              <li class="media"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <form class="form-horizontal" role="form"
+            {{#if crear}}
+              action="reporteCreado"
+            {{else}}
+              action="reporteEditado"
+            {{/if}}
+            method="post" >
+            <div class="form-group">
+                <div class="col-sm-2">
+                  <label for="inputCliente" class="control-label">Cliente</label>
+                </div>
+                  <div class="col-md-4">
+                    <select class="form-control input-lg" id="sel1" name="cliente">
+                        {{#if crear}}
+                        <option disabled selected value> Seleccione Cliente </option>
+                            {{#each clientes}}
+                                <option>{{cliente}}</option>
+                            {{/each}}
+                        {{else}}
+                            <option selected>{{cliente}}</option>
+                        {{/if}}
+                    </select>
+                  </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-2">
+                  <label for="inputEmail3" class="control-label">Asesor</label>
+                </div>
+                  <div class="col-md-4">
+                    <select class="form-control input-lg" id="sel1" name="asesor">
+                      <option>{{asesor}}</option>
+                    </select>
+                  </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-2">
+                  <label class="control-label">Fecha</label>
+                </div>
+                <div class="col-md-4">
+                  <div id="sandbox-container">
+                    <div class="input-group date">
+                      <input type="text" class="form-control" name="fecha" 
+                      {{#if fecha}}
+                        value={{fecha}}  
+                      {{/if}}
+                      >
+                      <div class="input-group-addon">
+                        <span class="fa fa-calendar fa-fw fa-lg"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-sm-2">
+                  <label for="inputEmail3" class="control-label">H. Inicio</label>
+                </div>
+                  <div class="col-md-4">
+                    <select class="form-control input-lg" id="h_ini" name="hini">
+                      {{#if h_ini}}
+                        <option selected>{{h_ini}}</option>
+                      {{/if}}
+                      {{#each horas}}
+                            <option>{{hora}}</option>
+                        {{/each}}
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <select class="form-control input-lg" id="m_ini" name="mini">
+                       {{#if m_ini}}
+                        <option selected>{{m_ini}}</option>
+                      {{/if}}
+                      {{#each minutos}}
+                            <option>{{minuto}}</option>
+                        {{/each}}
+                    </select>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-sm-2">
+                  <label for="inputEmail3" class="control-label">H. Fin</label>
+                </div>
+                  <div class="col-md-4">
+                    <select class="form-control input-lg" id="h_fin" name="hfin">
+                      {{#if h_fin}}
+                        <option selected>{{h_fin}}</option>
+                      {{/if}}
+                      {{#each horas}}
+                            <option>{{hora}}</option>
+                        {{/each}}
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <select class="form-control input-lg" id="m_fin" name="mfin">
+                      {{#if m_fin}}
+                        <option selected>{{m_fin}}</option>
+                      {{/if}}
+                      {{#each minutos}}
+                        <option>{{minuto}}</option>
+                      {{/each}}
+                    </select>
+                  </div>
+              </div>
+
+
+              <div class="form-group">
+                <div class="col-sm-2">
+                  <label for="inputEmail3" class="control-label">H. Facturadas</label>
+                </div>
+                  <div class="col-md-4">
+                    <select class="form-control input-lg" id="h_fact" name="hfact">
+                      {{#if h_fact}}
+                        <option selected>{{h_fact}}</option>
+                      {{/if}}
+                      {{#each horas}}
+                            <option>{{hora}}</option>
+                        {{/each}}
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <select class="form-control input-lg" id="m_fact" name="mfact">
+                      {{#if m_fact}}
+                        <option selected>{{m_fact}}</option>
+                      {{/if}}
+                      {{#each minutos}}
+                            <option>{{minuto}}</option>
+                        {{/each}}
+                    </select>
+                  </div>
+              </div>
+              
+              <div class="form-group">
+                <div class="col-sm-2">
+                  <label for="inputBtnFact" class="control-label">Calcular H. Fact</label>
+                </div>                  
+                  <div class="col-md-4">
+                    <a id="btnfact"><img src="ichora.png" width="40" height="30" style="cursor: pointer;" ></a>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-sm-2">
+                  <label for="inputRemoto" class="control-label">Control Remoto</label>
+                </div>                  
+                  <div class="col-md-4">
+                    <a id="remoto"><img src="remote.jpg" width="40" height="30" style="cursor: pointer;" ></a>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-sm-2">
+                  <label for="inputPassword3" class="control-label">Observaciones</label>
+                </div>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputObservacion" placeholder="Observaciones" name="obs" {{#if obser}}
+                        value = '{{obser}}'
+                      {{/if}} >
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                                            {{#unless crear}}
+                                            <input type="hidden" name="fechaAnterior" value="{{fecha}}">
+                                            {{/unless}}
+                                            <input type="hidden" name="enSesion" value="enSesion">
+                  <button type="submit" class="btn btn-block btn-lg btn-primary" name="Enviar" value="funcion">{{tarea}}</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script type="text/javascript">
+$('#sandbox-container .input-group.date').datepicker({
+    format: "dd/mm/yyyy",
+    language: "es",
+    autoclose: true,
+    toggleActive: true
+});
+    </script>
+
+
+
+ <script>
+  $(document).ready(function(){     
+    //Funcion  botoncontrol remoto
+    $('#remoto').click(function(){
+    var obs = document.getElementById("inputObservacion").value;
+    var msj = 'Control Remoto';
+
+      if (obs == undefined || obs == '') {
+        document.getElementById("inputObservacion").value = msj;
+      }
+      else if (!obs.includes(msj)) {
+        document.getElementById("inputObservacion").value = msj + " " + obs;
+      }
+    });
+    
+    
+    //Funcion boton calcular horas
+    $('#btnfact').click(function(){
+      var m_total = 0;
+      var h_total = 0;
+      // hora inicio
+      var e = document.getElementById("h_ini");
+      var hor_ini = parseInt(e.options[e.selectedIndex].text,10);
+      e = document.getElementById("m_ini");
+      var min_ini = parseInt(e.options[e.selectedIndex].text,10);
+      // hora fin
+      e = document.getElementById("h_fin");
+      var hor_fin = parseInt(e.options[e.selectedIndex].text,10);
+      e = document.getElementById("m_fin");
+      var min_fin = parseInt(e.options[e.selectedIndex].text,10);
+      if (hor_fin > hor_ini) {
+            if (min_fin >= min_ini) {
+                m_total = min_fin - min_ini;
+                h_total = hor_fin - hor_ini;
+            } else {
+                h_total = hor_fin - hor_ini - 1;
+                m_total = 60 - (min_ini - min_fin);
+            }
+        }
+        else { // horas son iguales
+            h_total = 0;
+            m_total = min_fin - min_ini;
+        }
+      
+    var element = document.getElementById('h_fact');
+    var str = h_total.toString();
+    if (str.length == 1) {
+      str = "0" + str;  
+    }
+    element.value = str;
+    element = document.getElementById('m_fact');
+    str = m_total.toString();
+    if (str.length == 1) {
+      str = "0" + str;  
+    }
+    element.value = str;
+    });
+    
+    
+    
+  });
+  
+</script>
+  
+
+
+
+</body></html>

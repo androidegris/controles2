@@ -1,0 +1,290 @@
+<html><head>
+    <meta charset="utf-8">
+    <title>Controles HLS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+  </head><body>
+    <div class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><span>CONTROLES HLS</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="hidden-sm hidden-xs">
+              <a href="/"><img src="home.png" alt="Inicio" width="25" height="25"></a>
+            </li>
+            <li>
+              <a href="/">Inicio</a>
+            </li>
+            <li>
+              <a href="/historico">Historico</a>
+            </li>
+            <li>
+              <a href="/admin">Admin</a>
+            </li>
+            {{#if asesor}}
+            <li>
+              <a href="/salir">Salir</a>
+            </li>
+            {{/if}}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="section section-primary text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="media-list">
+              <li class="media">
+                <a class="pull-left" href="/"><img class="img-circle media-object" src="logo1.png" height="64" width="64"></a>
+                <div class="media-body">
+                  <h1 class="text-center">{{title}}</h1>
+                </div>
+              </li>
+              <li class="media"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{#if asesor}}
+      <h3 class="text-center">Bienvenido {{asesor}}</h3>
+    {{/if}}
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <a class="btn btn-block btn-lg btn-primary" href="subirReportes">Lista Reportes</a>
+          </div>
+          <div class="col-md-3">
+            <a class="btn btn-block btn-lg btn-primary" href="reportesCalendario">Calendario Reportes</a>
+          </div>
+          <div class="col-md-3">
+            <a class="btn btn-block btn-lg btn-primary" href="resumenReportes">Descargar Resumen Txt</a>
+          </div>
+          <div class="col-md-3">
+            <a class="btn btn-block btn-lg btn-primary" href="baseDatos.db">Descargar Base de Datos</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12"><hr></div>
+      <div class="section">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3">
+              <h3 class="text-center">Reportes Asesor</h3>
+              <div class="row">
+                <div class="col-md-12">
+                  <form role="form" action="subirReportesAsesor" method="post">
+                    <div class="form-group has-success">
+                      <select class="form-control input-lg" id="sel1" name="asesor">
+                        <option disabled selected value> Seleccione Asesor </option>
+                        <option>andres</option>
+                        <option>cmunoz</option>
+                        <option>Javier</option>
+                        <option>mhuerta</option>
+                        <option>gutierol</option>
+                        <option>Guayarmina</option>
+                        <option>enrimon</option>
+                      </select>
+                    </div>
+                    <button type="submit" class="btn btn-block btn-lg btn-primary" name="Enviar" value="Sign up">VER</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <h3 class="text-center">Calendario Asesor</h3>
+              <div class="row">
+                <div class="col-md-12">
+                  <form role="form" action="calendarioSubirActividadesAsesor" method="post">
+                    <div class="form-group has-success">
+                      <select class="form-control input-lg" id="sel1" name="asesor">
+                        <option disabled selected value> Seleccione Asesor </option>
+                        <option>andres</option>
+                        <option>cmunoz</option>
+                        <option>Javier</option>
+                        <option>mhuerta</option>
+                        <option>gutierol</option>
+                        <option>Guayarmina</option>
+                        <option>enrimon</option>
+                      </select>
+                    </div>
+                    <button type="submit" class="btn btn-block btn-lg btn-primary" name="Enviar" value="Sign up">VER</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <h3 class="text-center">Actividades Asesor</h3>
+              <div class="row">
+                <div class="col-md-12">
+                  <form role="form" action="subirActividadesAsesor" method="post">
+                    <div class="form-group has-success">
+                      <select class="form-control input-lg" id="sel1" name="asesor">
+                        <option disabled selected value> Seleccione Asesor </option>
+                        <option>andres</option>
+                        <option>cmunoz</option>
+                        <option>Javier</option>
+                        <option>mhuerta</option>
+                        <option>gutierol</option>
+                        <option>Guayarmina</option>
+                        <option>enrimon</option>
+                      </select>
+                    </div>
+                    <button type="submit" class="btn btn-block btn-lg btn-primary" name="Enviar" value="Sign up">VER</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <h3 class="text-center">Actividades Cliente</h3>
+              <div class="row">
+                <div class="col-md-12">
+                  <form role="form" action="subirReportesCliente" method="post">
+                    <div class="form-group has-success">
+                      <select class="form-control input-lg" id="sel1" name="cliente">
+                        <option disabled selected value> Seleccione Cliente </option>
+                        {{#each clientes}}
+                        <option>{{cliente}}</option>
+                        {{/each}}
+                      </select>
+                    </div>
+                    <button type="submit" class="btn btn-block btn-lg btn-primary" name="Enviar" value="Sign up">VER</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{#if asesor }}
+      <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title text-danger">Edición Reportes</h3>
+              </div>
+              <div class="panel-body">
+                <form action="subirReportesAsesor" role="form" method="post">
+                                            <input type="hidden" name="asesor" value="enSesion">
+                                            <button type="submit" class="btn btn-block btn-success">Mis Reportes</button>
+                </form>
+                <div class="col-md-12">
+                  <hr>
+                </div>
+                <form action="calendarioEditarActividadesAsesor" role="form" method="post">
+                                            <input type="hidden" name="asesor" value="enSesion">
+                                            <button type="submit" class="btn btn-block btn-success">Mi Calendario</button>
+                </form>
+                <div class="col-md-12">
+                  <hr>
+                </div>
+                <form action="crearReporte" role="form" method="post">
+                                            <input type="hidden" name="asesor" value="enSesion">
+                                            <button type="submit" class="btn btn-block btn-success">Crear Reporte</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+          <div class="col-md-12">
+              <div class="col-md-4">
+              </div>
+               <div class="col-md-4 text-center">
+                    <a href="/android"><img src="android.png" class="center-block" width="120" height="120"></a>
+                    <a href="/android" class="btn btn-primary" role="button">Aplicación Android</a>
+              </div>
+              <div class="col-md-4">
+              </div>
+          </div>
+        </div>
+    {{else}}
+      <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">Edición Reportes</h3>
+              </div>
+              <div class="panel-body">
+                <form role="form" action="login" method="post">
+                  <div class="form-group">
+                    <label class="control-label" for="exampleInputEmail1">Usuario</label>
+                    <input class="form-control" id="exampleInputEmail1" placeholder="Ingrese nombre de usuario"
+                    type="text" name="asesor">
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label" for="exampleInputPassword1">Password</label>
+                    <input class="form-control" id="exampleInputPassword1"
+                    placeholder="Ingrese contraseña" type="password" name="clave">
+                  </div>
+                  <button type="submit" class="btn btn-lg btn-primary">Login</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+          <div class="col-md-12">
+              <div class="col-md-4">
+              </div>
+               <div class="col-md-4 text-center">
+                    <a href="/android"><img src="android.png" class="center-block" width="120" height="120"></a>
+                    <a href="/android" class="btn btn-primary" role="button">Aplicación Android</a>
+              </div>
+              <div class="col-md-4">
+              </div>
+          </div>
+        </div>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">Registro Nuevo Asesor</h3>
+              </div>
+              <div class="panel-body">
+                <div class="col-md-12 text-center">
+                  <a href="/registro" class="btn btn-primary" role="button">Registrarse</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>          
+    {{/if}}
+       
+    
+    
+  </body>
+    
+  
+
+</body></html>

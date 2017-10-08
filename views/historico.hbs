@@ -1,0 +1,183 @@
+<html><head>
+    <meta charset="utf-8">
+    <title>Controles HLS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+  </head><body>
+    <div class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><span>CONTROLES HLS</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="hidden-sm hidden-xs">
+              <a href="/"><img src="home.png" alt="Inicio" width="25" height="25"></a>
+            </li>
+            <li>
+              <a href="/">Inicio</a>
+            </li>
+            <li>
+              <a href="/historico">Historico</a>
+            </li>
+            {{#if asesor}}
+            <li>
+              <a href="/salir">Salir</a>
+            </li>
+            {{/if}}
+            <li>
+              <a href="/admin">Admin</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="section section-success text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="media-list">
+              <li class="media">
+                <a class="pull-left" href="historico"><img class="img-circle media-object" src="logo1.png" height="64" width="64"></a>
+                <div class="media-body">
+                  <h1 class="text-center">Histórico Controles HLS</h1>
+                </div>
+              </li>
+              <li class="media"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{#if asesor}}
+      <h3 class="text-center">Bienvenido {{asesor}}</h3>
+    {{/if}}
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <a class="btn btn-block btn-lg btn-success" href="historicoSubirReportes">Lista Reportes</a>
+          </div>
+          <div class="col-md-4">
+            <a class="btn btn-block btn-lg btn-success" href="historicoCalendario">Calendario Reportes</a>
+          </div>
+          <div class="col-md-4">
+            <a class="btn btn-block btn-lg btn-success" href="historicoBaseDatos.db">Descargar Base de Datos</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12"><hr></div>
+      <div class="section">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3">
+              <h3 class="text-center">Reportes Asesor</h3>
+              <div class="row">
+                <div class="col-md-12">
+                  <form role="form" action="historicoSubirReportesAsesor" method="post">
+                    <div class="form-group has-success">
+                      <select class="form-control input-lg" id="sel1" name="asesor">
+                        <option disabled selected value> Seleccione Asesor </option>
+                        <option>andres</option>
+                        <option>cmunoz</option>
+                        <option>Javier</option>
+                        <option>mhuerta</option>
+                        <option>gutierol</option>
+                        <option>Guayarmina</option>
+                        <option>enrimon</option>
+                      </select>
+                    </div>
+                    <button type="submit" class="btn btn-block btn-lg btn-success" name="Enviar" value="Sign up">VER</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <h3 class="text-center">Calendario Asesor</h3>
+              <div class="row">
+                <div class="col-md-12">
+                  <form role="form" action="historicoCalendarioAsesor" method="post">
+                    <div class="form-group has-success">
+                      <select class="form-control input-lg" id="sel1" name="asesor">
+                        <option disabled selected value> Seleccione Asesor </option>
+                        <option>andres</option>
+                        <option>cmunoz</option>
+                        <option>Javier</option>
+                        <option>mhuerta</option>
+                        <option>gutierol</option>
+                        <option>Guayarmina</option>
+                        <option>enrimon</option>
+                      </select>
+                    </div>
+                    <button type="submit" class="btn btn-block btn-lg btn-success" name="Enviar" value="Sign up">VER</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <h3 class="text-center">Actividades Asesor</h3>
+              <div class="row">
+                <div class="col-md-12">
+                  <form role="form" action="historicoSubirActividadesAsesor" method="post">
+                    <div class="form-group has-success">
+                      <select class="form-control input-lg" id="sel1" name="asesor">
+                        <option disabled selected value> Seleccione Asesor </option>
+                        <option>andres</option>
+                        <option>cmunoz</option>
+                        <option>Javier</option>
+                        <option>mhuerta</option>
+                        <option>gutierol</option>
+                        <option>Guayarmina</option>
+                        <option>enrimon</option>
+                      </select>
+                    </div>
+                    <button type="submit" class="btn btn-block btn-lg btn-success" name="Enviar" value="Sign up">VER</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <h3 class="text-center">Actividades Cliente</h3>
+              <div class="row">
+                <div class="col-md-12">
+                  <form role="form" action="historicoSubirReportesCliente" method="post">
+                    <div class="form-group has-success">
+                      <select class="form-control input-lg" id="sel1" name="cliente">
+                        <option disabled selected value> Seleccione Cliente </option>
+                        {{#each clientes}}
+                        <option>{{cliente}}</option>
+                        {{/each}}
+                      </select>
+                    </div>
+                    <button type="submit" class="btn btn-block btn-lg btn-success" name="Enviar" value="Sign up">VER</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+          
+        </div>
+      </div>
+    </div>
+     
+  </body>
+    
+  
+
+</body></html>

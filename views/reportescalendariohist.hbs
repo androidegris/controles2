@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Controles HLS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="css/fullcalendar.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href='css/fullcalendar.min.css' rel='stylesheet' />
+    <link href='css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+    <script type="text/javascript"  src='lib/moment.min.js'></script>
+    <script type="text/javascript" src='lib/jquery.min.js'></script>
+    <script type="text/javascript" src='js/fullcalendar.min.js'></script>
+    <script type="text/javascript" src='lang/es.js'></script>
+    <script src="js/bootstrapmodal.min.js"></script>
+</head>
+<body>
+        <div class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><span>CONTROLES HLS</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="hidden-sm hidden-xs">
+              <a href="/"><img src="home.png" alt="Inicio" width="25" height="25"></a>
+            </li>
+            <li>
+              <a href="/">Inicio</a>
+            </li>
+            <li>
+              <a href="/historico">Historico</a>
+            </li>
+            {{#if asesor}}
+            <li>
+              <a href="/salir">Salir</a>
+            </li>
+            {{/if}}
+            <li>
+              <a href="/admin">Admin</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="section section-success text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="media-list">
+              <li class="media">
+                <a class="pull-left" href="historico"><img class="img-circle media-object" src="logo1.png" height="64" width="64"></a>
+                <div class="media-body">
+                  <h1 class="text-center">{{title}}</h1>
+                </div>
+              </li>
+              <li class="media"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <hr>
+                <br/>
+                <div id="bootstrapModalFullCalendar"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="fullCalModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden=true>×</span> <span class="sr-only">close</span></button>
+                    <h4 id="modalTitle" class="modal-title"></h4>
+                </div>
+                <div id="modalBody" class="modal-body" style="background-color: #5CB85C; color: #FFFFFF">
+                  <h4 id="asesorModal">Asesor: xxx</h4>
+                  <h4 id="clienteModal">Cliente: xx</h4>
+                  <h4 id="fechaModal">Fecha: xx</h4>
+                  <h4 id="hiniModal">H. Inicio: xx</h4>
+                  <h4 id="hfinModal">H. Fin: xx</h4>
+                  <h4 id="hfactModal">H. Facturadas: xx</h4>
+                  <h4 id="obserModal">Observaciones: xxx</h4>
+                  <form action="historicoSubirVerActividad" role="form" method="post">
+                                            <input type="hidden" id="asesorInput" name="asesor" value="">
+                                            <input type="hidden" id="clienteInput" name="cliente" value="">
+                                            <input type="hidden" id="fechaInput" name="fecha" value="">
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-sm btn-info">VER &nbsp;ACTIVIDADES</button>
+                  </div>
+                  
+                  </form>
+                  
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2">
+            <ul class="list-group">
+              <li class="list-group-item text-center">Asesores</li>
+              {{#each asesores}} 
+              <li class="list-group-item text-center" style="background-color: {{color}};  color:#FFFFFF;">{{asesor}}</li>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+
+
+    <script>
+        $(document).ready(function() {
+            $('#bootstrapModalFullCalendar').fullCalendar({
+               lang: 'es',
+                header: {
+                    left: '',
+                    center: 'prev title next',
+                    right: 'month,basicWeek,basicDay'
+                },
+                eventClick:  function(event, jsEvent, view) {
+                    $('#modalTitle').html(event.title);
+                  var asesor = "Asesor: " + event.asesor;
+                  var cliente = "Cliente: " + event.cliente;
+                  var fecha = "Fecha: " + event.fecha;
+                  var hini = "H. Inicio: " + event.hini;
+                  var hfin = "H. Fin: " + event.hfin;
+                  var hfact = "H. Facturadas: " + event.hfact;
+                  var obser = "Observaciones: " + event.description;
+                  
+                    
+                    document.getElementById('asesorModal').innerHTML = asesor;
+                    document.getElementById('clienteModal').innerHTML = cliente;
+                    document.getElementById('fechaModal').innerHTML = fecha;
+                    document.getElementById('hiniModal').innerHTML = hini;
+                    document.getElementById('hfinModal').innerHTML = hfin;
+                    document.getElementById('hfactModal').innerHTML = hfact;
+                     document.getElementById('obserModal').innerHTML = obser;
+                    
+                    
+                    
+                    
+                    var element = document.getElementById("asesorInput");
+                    element.setAttribute("value", event.asesor); 
+                    element = document.getElementById("clienteInput");
+                    element.setAttribute("value", event.cliente);
+                    element = document.getElementById("fechaInput");
+                    element.setAttribute("value", event.fecha);
+                    
+                    
+                    $('#fullCalModal').modal();
+                    return false;
+                },
+                businessHours: false, // display business hours,
+                fixedWeekCount: false,
+                showNonCurrentDates: false,
+                displayEventTime: false,
+                defaultDate: moment('{{fechaPrimera}}', "DD-MM-YYYY"),
+                navLinks: true, // can click day/week names to navigate views
+                events:
+                [
+                   {{#each eventos}}
+                   {
+                      title:'{{cliente}}',
+                      description:'{{obs}}',
+                      start:moment('{{fecha}}', "DD-MM-YYYY"),
+                      asesor: '{{asesor}}',
+                      cliente: '{{cliente}}',
+                      hini: '{{hini}}', 
+                      fecha: '{{fecha}}',
+                      hfin:  '{{hfin}}',
+                      hfact: '{{hfact}}'
+                   },
+                   {{/each}}
+                ],
+                eventRender: function(event, element) {
+                {{#each asesores}}  
+                if(event.asesor == "{{asesor}}") {
+                    element.css('background-color', '{{color}}');
+                }
+                {{/each}}
+            }
+            });
+        });
+    </script>
+</body>
+</html>

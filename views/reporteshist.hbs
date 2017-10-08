@@ -1,0 +1,304 @@
+<html><head>
+        <meta charset="utf-8">
+        <title>Controles HLS</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    </head><body>
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/"><span>CONTROLES HLS</span></a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="hidden-sm hidden-xs">
+                            <a href="historico"><img src="home.png" alt="Inicio" width="25" height="25"></a>
+                        </li>
+                        <li>
+                            <a href="/">Inicio</a>
+                        </li>
+                        <li>
+              <a href="/historico">Historico</a>
+            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="section section-success text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="media-list">
+                            <li class="media">
+                                <a class="pull-left" href="historico"><img class="img-circle media-object" src="logo1.png" height="64" width="64"></a>
+                                <div class="media-body">
+                                    <h1 class="text-center">{{titulo}}</h1>
+                                </div>
+                            </li>
+                            <li class="media"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+              
+         <div class="row">
+             <div class="col-md-4">
+                 </div>
+        <div class="col-md-4">
+             <h3 class="text-center">Reportes por Mes</h3>
+              {{#if asesor}}
+              <form role="form" action="historicoSubirReportesAsesor" method="post">
+              {{else}}
+              <form role="form" action="historicoSubirReportesMes" method="post">
+              {{/if}}
+                 <select class="form-control input-lg" id="sel1" name="mes">
+                        <option disabled selected value> Seleccione Mes </option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                      </select>
+                      <select class="form-control input-lg" id="sel1" name="anio">
+                        <option disabled selected value>Seleccione Año</option>
+                        <option>2016</option>
+                        <option>2017</option>
+                        <option>2018</option>
+                      </select>
+                      <input type="hidden" name="asesor" value="{{asesor}}">
+                <button type="submit" class="btn btn-block btn-lg btn-success" name="Enviar" value="Sign up">VER</button>
+            </form>
+        </div>
+        <div class="col-md-4">
+                 </div>
+        </div>
+        
+        {{#if seguimiento}}
+        <div class="row"> 
+         <div class="col-md-6 text-right">
+      <!-- Trigger the modal with a button -->
+          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Seguimiento Horas</button>     
+    </div>
+    <div class="col-md-6 text-left">
+      <!-- Trigger the modal with a button -->
+          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">Resumen Clientes</button>     
+    </div>
+    </div>
+        {{/if}}
+        
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                                <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Asesor</th>
+                                    <th>Cliente</th>
+                                    <th>Fecha</th>
+                                    <th>H. Inicio</th>
+                                    <th>H. Fin</th>
+                                    <th>H. Facturadas</th>
+                                    <th>Observaciones</th>
+                                    <th>Actividades</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                        {{#each reportes}}
+                                <tr>
+                                    <td>{{asesor}}</td>
+                                    <td>{{cliente}}</td>
+                                    <td>{{fecha}}</td>
+                                    <td>{{hini}}</td>
+                                    <td>{{hfin}}</td>
+                                    <td>{{hfact}}</td>
+                                    <td>{{obs}}</td>
+                                    {{#if edicion}}
+                                    <td>
+                                        <form action="editarActividad" role="form" method="post">
+                                            <input type="hidden" name="asesor" value="{{asesor}}">
+                                            <input type="hidden" name="cliente" value="{{cliente}}">
+                                            <input type="hidden" name="fecha" value="{{fecha}}">
+                                            <button type="submit" class="btn btn-sm btn-success">EDITAR &nbsp;ACTIVIDADES</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="editarReporte" role="form" method="post">
+                                            <input type="hidden" name="asesor" value="{{asesor}}">
+                                            <input type="hidden" name="cliente" value="{{cliente}}">
+                                            <input type="hidden" name="fecha" value="{{fecha}}">
+                                            <input type="hidden" name="hini" value="{{hini}}">
+                                            <input type="hidden" name="hfin" value="{{hfin}}">
+                                            <input type="hidden" name="hfact" value="{{hfact}}">
+                                            <input type="hidden" name="obs" value="{{obs}}">
+                                            <button type="submit" class="btn btn-info">EDITAR</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="reporteEliminado" role="form" method="post">
+                                            <input type="hidden" name="asesor" value="{{asesor}}">
+                                            <input type="hidden" name="cliente" value="{{cliente}}">
+                                            <input type="hidden" name="fecha" value="{{fecha}}">
+                                            <input type="hidden" name="enSesion" value="enSesion">
+                                            <button type="submit" class="btn btn-danger">ELIMINAR</button>
+                                        </form>
+                                    </td>
+                                    {{else}}
+                                    <td>
+                                        <form action="historicoSubirVerActividad" role="form" method="post">
+                                            <input type="hidden" name="asesor" value="{{asesor}}">
+                                            <input type="hidden" name="cliente" value="{{cliente}}">
+                                            <input type="hidden" name="fecha" value="{{fecha}}">
+                                            <button type="submit" class="btn btn-sm btn-success">VER &nbsp;ACTIVIDADES</button>
+                                        </form>
+                                    </td>
+                                    {{/if}}
+                                    
+                                    
+                        {{/each}}
+                                </tr></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        {{#if seguimiento}}
+    
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">Seguimiento Horas</h4>
+          </div>
+          <div class="modal-body">
+            <p></p>
+            <h4>
+              <strong>Total horas:</strong>&nbsp;{{t_horas}}</h4>
+            <h4>
+              <strong>Total facturado:</strong>&nbsp;{{t_horas_fact}}</h4>
+            <h4 class="text-center">
+              <strong>Promedio Diario ( {{dias}} días )</strong>
+            </h4>
+            <div class="active progress progress-striped">
+                          {{#equal estadoP alto}}  
+                          <div class="progress-bar progress-bar-success" role="progressbar" style="width: 100%;">
+                              {{promedio}} Hrs
+                          </div>
+                          {{/equal}} 
+                          {{#equal estadoP normal}}   
+                          <div class="progress-bar progress-bar-info" role="progressbar" style="width: 75%;">
+                              {{promedio}} Hrs
+                          </div>
+                          {{/equal}} 
+                          {{#equal estadoP bajo}}   
+                          <div class="progress-bar progress-bar-danger" role="progressbar" style="width: 35%;">
+                              {{promedio}} Hrs
+                          </div>
+                          {{/equal}} 
+            </div>
+            <h4 class="text-center">
+              <strong>80 Hrs</strong>
+            </h4>
+            <div class="active progress progress-striped">
+                          {{#equal estado alto}}  
+                          <div class="progress-bar progress-bar-success" role="progressbar" style="{{porcentaje}}">
+                              {{horas}} Hrs
+                          </div>
+                          {{/equal}} 
+                          {{#equal estado normal}}   
+                          <div class="progress-bar progress-bar-info" role="progressbar" style="{{porcentaje}}">
+                              {{horas}} Hrs
+                          </div>
+                          {{/equal}} 
+                          {{#equal estado bajo}}   
+                          <div class="progress-bar progress-bar-danger" role="progressbar" style="{{porcentaje}}">
+                              {{horas}} Hrs
+                          </div>
+                          {{/equal}} 
+            </div>
+            <p></p>
+          </div>
+          <div class="modal-footer">
+            <a class="btn btn-primary" data-dismiss="modal">Cerrar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-12 text-center">
+    <h4>
+        &nbsp
+    </h4> 
+    </div>
+        
+    <!-- Modal -->
+    <div class="modal fade" id="myModal2" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">Resumen Clientes</h4>
+          </div>
+          <div class="modal-body">
+              <p></p>
+              {{#each resumenClientes}}
+            <h4>
+              <strong>{{cliente}}</strong></h4>
+              {{#each fechas}}
+             <h4 class="text-center">
+                 {{this}}
+              </h4>
+             {{/each}}
+            <h4  class="text-center">
+              <strong>{{strH}}</strong></h4>
+            <hr>
+            {{/each}}
+            <h4>
+              <strong>Total facturado:</strong>&nbsp;{{t_horas_fact}}</h4>
+            <p></p>
+          </div>
+          <div class="modal-footer">
+            <a class="btn btn-primary" data-dismiss="modal">Cerrar</a>
+          </div>
+        </div>
+      </div>
+    </div>    
+    {{/if}}
+        
+        
+        
+        
+        
+        
+        
+        
+</body>
+
+</html>

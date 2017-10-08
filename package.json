@@ -1,0 +1,22 @@
+{
+  "name": "controles_hls",
+  "version": "1.0.0",
+  "description": "aplicacion para ver y editar servidor controles",
+  "main": "app.js",
+  "dependencies": {
+    "async": "^2.3.0",
+    "body-parser": "^1.17.0",
+    "express": "^4.15.0",
+    "express-session": "^1.15.1",
+    "hbs": "^4.0.1",
+    "request": "^2.79.0",
+    "sqlite3": "^3.1.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "Andres Guzman <usbandroidex@gmail.com>",
+  "license": "ISC"
+}
